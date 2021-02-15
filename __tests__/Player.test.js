@@ -61,4 +61,22 @@ test('subtracts from players health', () =>{
     player.reduceHealth(99999);
 
     expect(player.health).toBe(0);
-})
+});
+
+test('get players attack value', ()=>{
+    const player = new Player('Mark');
+    player.strength = 10;
+
+    expect(player.getAttackValue()).toBeGreaterThanOrEqual(5);
+    expect(player.getAttackValue()).toBeLessThanOrEqual(15);
+});
+
+test('add potion to inventory', () =>{
+    const player = new Player('Mark');
+    const oldCount = player.inventory.length;
+
+    player.addPotion(new Potion());
+
+    expect(player.inventory.length).toBeGreaterThan(oldCount);
+});
+
